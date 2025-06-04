@@ -1,19 +1,19 @@
-package go_cheezeepay
+package go_mtpay
 
 import (
-	"github.com/asaka1234/go-cheezeepay/utils"
+	"github.com/asaka1234/go-mtpay/utils"
 	"github.com/go-resty/resty/v2"
 )
 
 type Client struct {
-	Params CheezeePayInitParams
+	Params MTPayInitParams
 
 	ryClient *resty.Client
 	logger   utils.Logger
 	rsaUtil  utils.CheezeebitRSASignatureUtil
 }
 
-func NewClient(logger utils.Logger, params CheezeePayInitParams) *Client {
+func NewClient(logger utils.Logger, params MTPayInitParams) *Client {
 	return &Client{
 		Params: params,
 

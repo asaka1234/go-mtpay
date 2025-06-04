@@ -1,4 +1,4 @@
-module github.com/asaka1234/go-cheezeepay
+module github.com/asaka1234/go-mtpay
 
 go 1.24.2
 

@@ -1,4 +1,4 @@
-package go_cheezeepay
+package go_mtpay
 
 import (
 	"fmt"
@@ -6,7 +6,7 @@ import (
 )
 
 // https://pay-apidoc-en.cheezeebit.com/#p2p-payin-notification
-func (cli *Client) DepositCallback(req CheezeePayDepositBackReq, processor func(CheezeePayDepositBackReq) error) error {
+func (cli *Client) DepositCallback(req MTPayDepositBackReq, processor func(MTPayDepositBackReq) error) error {
 	//验证签名
 	sign := req.PlatSign //收到的签名
 

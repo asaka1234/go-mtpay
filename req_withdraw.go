@@ -1,4 +1,4 @@
-package go_cheezeepay
+package go_mtpay
 
 import (
 	"crypto/tls"
@@ -8,7 +8,7 @@ import (
 )
 
 // https://pay-apidoc-en.cheezeebit.com/#p2p-payout-order
-func (cli *Client) Withdraw(req CheezeePayWithdrawReq) (*CheezeePayWithdrawResp, error) {
+func (cli *Client) Withdraw(req MTPayWithdrawReq) (*MTPayWithdrawResp, error) {
 
 	rawURL := cli.Params.WithdrawUrl
 
@@ -29,7 +29,7 @@ func (cli *Client) Withdraw(req CheezeePayWithdrawReq) (*CheezeePayWithdrawResp,
 	signStr, _ := cli.rsaUtil.GetSign(signDataMap, cli.Params.RSAPrivateKey) //私钥加密
 	signDataMap["platSign"] = signStr
 
-	var result CheezeePayWithdrawResp
+	var result MTPayWithdrawResp
 
 	_, err := cli.ryClient.SetTLSClientConfig(&tls.Config{InsecureSkipVerify: true}).
 		SetCloseConnection(true).

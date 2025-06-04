@@ -1,4 +1,4 @@
-package go_cheezeepay
+package go_mtpay
 
 import (
 	"crypto/tls"
@@ -8,7 +8,7 @@ import (
 )
 
 // https://pay-apidoc-en.cheezeebit.com/#p2p-payin-order
-func (cli *Client) Deposit(req CheezeePayDepositReq) (*CheezeePayDepositResponse, error) {
+func (cli *Client) Deposit(req MTPayDepositReq) (*MTPayDepositResponse, error) {
 
 	rawURL := cli.Params.DepositUrl
 
@@ -31,7 +31,7 @@ func (cli *Client) Deposit(req CheezeePayDepositReq) (*CheezeePayDepositResponse
 
 	fmt.Printf("sign: %s\n", signStr)
 
-	var result CheezeePayDepositResponse
+	var result MTPayDepositResponse
 
 	resp, err := cli.ryClient.SetTLSClientConfig(&tls.Config{InsecureSkipVerify: true}).
 		SetCloseConnection(true).

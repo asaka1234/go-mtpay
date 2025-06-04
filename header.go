@@ -1,10 +1,15 @@
-package go_cheezeepay
+package go_mtpay
 
-func getHeaders() map[string]string {
+import (
+	"github.com/spf13/cast"
+)
+
+func getHeaders(accessKey, sign string, unixMilli int64) map[string]string {
 	return map[string]string{
 		"Content-Type": "application/json",
 		"charset":      "utf-8",
-		//文档要求必须要有
-		"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36",
+		"timestamp":    cast.ToString(unixMilli), //time.Now().UTC().UnixMilli()),
+		"access_key":   accessKey,
+		"signature":    sign,
 	}
 }

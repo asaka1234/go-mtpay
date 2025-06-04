@@ -1,4 +1,4 @@
-package go_cheezeepay
+package go_mtpay
 
 import (
 	"fmt"
@@ -8,7 +8,7 @@ import (
 func TestDeposit(t *testing.T) {
 
 	//构造client
-	cli := NewClient(nil, CheezeePayInitParams{MERCHANT_ID, RSA_PUBLIC_KEY, RSA_PRIVATE_KEY, DEPOST_URL, DEPOST_BACK_URL, WITHDRAW_URL, WITHDRAW_BACK_URL})
+	cli := NewClient(nil, MTPayInitParams{MERCHANT_ID, RSA_PUBLIC_KEY, RSA_PRIVATE_KEY, DEPOST_URL, DEPOST_BACK_URL, WITHDRAW_URL, WITHDRAW_BACK_URL})
 
 	//发请求
 	resp, err := cli.Deposit(GenDepositRequestDemo())
@@ -19,8 +19,8 @@ func TestDeposit(t *testing.T) {
 	fmt.Printf("resp:%+v\n", resp)
 }
 
-func GenDepositRequestDemo() CheezeePayDepositReq {
-	return CheezeePayDepositReq{
+func GenDepositRequestDemo() MTPayDepositReq {
+	return MTPayDepositReq{
 		CustomerMerchantsId: "12345", //商户uid
 		LegalCoin:           "INR",
 		MerchantOrderId:     "8787791",
