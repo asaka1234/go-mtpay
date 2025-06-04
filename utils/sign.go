@@ -9,7 +9,7 @@ import (
 	"time"
 )
 
-func GenerateSignature(accessKey, secretKey string) (string, int64, error) {
+func GenSign(accessKey, secretKey string) (string, int64, error) {
 	// 1. 获取当前UTC时间戳（毫秒）
 	timestamp := time.Now().UTC().UnixMilli()
 
@@ -26,4 +26,10 @@ func GenerateSignature(accessKey, secretKey string) (string, int64, error) {
 	// 4. 转换为十六进制大写字符串
 	signature := hex.EncodeToString(h.Sum(nil))
 	return strings.ToUpper(signature), timestamp, nil
+}
+
+func VerifySign(accessKey, secretKey, rawSign string) bool {
+
+	sign, _, _ := GenSign(accessKey, secretKey)
+	return sign == rawSign
 }
