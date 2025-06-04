@@ -6,12 +6,9 @@ import (
 	"encoding/hex"
 	"fmt"
 	"strings"
-	"time"
 )
 
-func GenSign(accessKey, secretKey string) (string, int64, error) {
-	// 1. 获取当前UTC时间戳（毫秒）
-	timestamp := time.Now().UTC().UnixMilli()
+func GenSign(accessKey, secretKey string, timestamp int64) (string, int64, error) {
 
 	// 2. 拼接字符串 {access_key}_{timestamp}
 	message := fmt.Sprintf("%s_%d", accessKey, timestamp)
@@ -28,8 +25,9 @@ func GenSign(accessKey, secretKey string) (string, int64, error) {
 	return strings.ToUpper(signature), timestamp, nil
 }
 
-func VerifySign(accessKey, secretKey, rawSign string) bool {
+func VerifySign(accessKey, secretKey string, timestamp int64, rawSign string) bool {
+	// 1. 获取当前UTC时间戳（毫秒）
 
-	sign, _, _ := GenSign(accessKey, secretKey)
+	sign, _, _ := GenSign(accessKey, secretKey, timestamp)
 	return sign == rawSign
 }

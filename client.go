@@ -10,7 +10,6 @@ type Client struct {
 
 	ryClient *resty.Client
 	logger   utils.Logger
-	rsaUtil  utils.CheezeebitRSASignatureUtil
 }
 
 func NewClient(logger utils.Logger, params MTPayInitParams) *Client {
@@ -19,6 +18,5 @@ func NewClient(logger utils.Logger, params MTPayInitParams) *Client {
 
 		ryClient: resty.New(), //client实例
 		logger:   logger,
-		rsaUtil:  utils.CheezeebitRSASignatureUtil{},
 	}
 }
