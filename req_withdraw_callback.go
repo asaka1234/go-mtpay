@@ -16,6 +16,10 @@ func (cli *Client) WithdrawCallback(req MTPayWebhookBackReq, processor func(MTPa
 		return fmt.Errorf("sign verify failed")
 	}
 
+	if req.Data.TradeType != "Withdraw" {
+		return fmt.Errorf("trade type error")
+	}
+
 	//开始处理
 	return processor(req)
 }

@@ -16,6 +16,10 @@ func (cli *Client) DepositCallback(req MTPayWebhookBackReq, processor func(MTPay
 		return fmt.Errorf("sign verify failed")
 	}
 
+	if req.Data.TradeType != "Deposit" {
+		return fmt.Errorf("trade type error")
+	}
+
 	//开始处理
 	return processor(req)
 }
