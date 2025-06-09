@@ -110,7 +110,7 @@ type TradeData struct {
 	TransactionAmount float64 `json:"transactionAmount" mapstructure:"transactionAmount"`
 	ReceivedAmount    float64 `json:"receivedAmount" mapstructure:"receivedAmount"`
 	TransactionFee    float64 `json:"transactionFee" mapstructure:"transactionFee"`
-	PaymentAmount     float64 `json:"paymentAmount" mapstructure:"paymentAmount"`
+	PaymentAmount     float64 `json:"paymentAmount" mapstructure:"paymentAmount"` //客户实际支付的最终金额（法币）
 	FiatCurrency      string  `json:"fiatCurrency" mapstructure:"fiatCurrency"`
 }
 
