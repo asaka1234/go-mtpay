@@ -29,6 +29,7 @@ func (cli *Client) Withdraw(req MTPayWithdrawReq) (*MTPayWithdrawResp, error) {
 		R().
 		SetBody(signDataMap).
 		SetHeaders(getHeaders(cli.Params.AccessKey, signStr, timestamp)).
+		SetDebug(cli.debugModel).
 		SetResult(&result).
 		SetError(&result).
 		Post(rawURL)
