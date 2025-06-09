@@ -6,14 +6,14 @@ import (
 )
 
 type Client struct {
-	Params MTPayInitParams
+	Params *MTPayInitParams
 
 	ryClient  *resty.Client
 	debugMode bool //是否调试模式
 	logger    utils.Logger
 }
 
-func NewClient(logger utils.Logger, params MTPayInitParams) *Client {
+func NewClient(logger utils.Logger, params *MTPayInitParams) *Client {
 	return &Client{
 		Params: params,
 
