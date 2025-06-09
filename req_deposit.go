@@ -35,7 +35,7 @@ func (cli *Client) Deposit(req MTPayDepositReq) (*MTPayDepositResponse, error) {
 		R().
 		SetBody(signDataMap).
 		SetHeaders(getHeaders(cli.Params.AccessKey, signStr, timestamp)).
-		SetDebug(cli.debugModel).
+		SetDebug(cli.debugMode).
 		SetResult(&result).
 		SetError(&result).
 		Post(rawURL)
